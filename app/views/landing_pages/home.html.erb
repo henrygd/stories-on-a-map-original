@@ -1,0 +1,48 @@
+<% content_for :head do %>
+  <style>html,body{overflow:hidden}</style>
+<% end %>
+
+<div id="map-canvas"></div>
+
+<div id="modal-container">
+  <img id="image_loader" class="hide" src="">
+  <div id="story-modal">
+    <div id="svg_holder">
+      <h1 id="story-title"></h1>    
+      <h3 id="story-author"></h3>
+    </div>
+    <div class="story-container">
+      <article id="story-content"></article>
+    </div>
+  </div>
+
+  <div class="options-panel">
+    <div id="options-popup"></div>
+    <div class="panel-section" id="close_panel">
+      <i class="fa fa-times"></i>
+    </div>
+    <div class="panel-section" id="font_panel">
+      <i class="fa fa-font"></i>
+    </div>
+    <div class="panel-section" id="night_mode_panel">
+      <i class="fa fa-moon-o"></i>
+    </div>
+    <div class="panel-section" id="image_panel">
+      <i class="fa fa-picture-o"></i>
+    </div>
+    <div class="panel-section" id="bookmark_panel">
+      <i id="bookmark_icon" class="fa fa-bookmark-o"></i>
+    </div>
+    <div class="panel-section" id="twitter_panel">
+      <i class="fa fa-twitter"></i>
+    </div>
+  </div>
+</div>
+
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoUCPaLN5G-9vCe0uzwdayzIFQt4_ssDo">
+</script>
+
+<% content_for :script do %>
+  HomePage.onLoad();
+<% end %>

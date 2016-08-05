@@ -1,0 +1,8 @@
+this is id <%= @params %>
+
+<p>Your bookmarks</p>
+<ul>
+  <% @bookmarks.each do |story| %>
+  <li><%= link_to story.title, story %> by <%= story.author %></li>
+  <% end %>
+</ul>

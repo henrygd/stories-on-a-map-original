@@ -1,0 +1,42 @@
+<%= form_for(@story, remote: true, html: {multipart: true}) do |f| %>
+  <div class="hide">
+    <div class="field">
+      <%= f.label :coords %><br>
+      <%= f.text_field :coords, value: '39, -95' %>
+    </div>
+    <div class="field">
+      <%= f.label :icon %><br>
+      <%= f.text_field :icon %>
+    </div>
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :author %><br>
+      <%= f.text_field :author %>
+    </div>
+    <div class="field">
+      <%= f.label :content %><br>
+      <%= f.text_area :content %>
+    </div>
+  </div>
+
+  <div class="image-preview">
+    <div id="image_one" class="image-container">
+      <%= f.label :picture, 'Story image' %>
+      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+    </div>
+
+    <div id="image_two" class="image-container">
+      <%= f.label :background, 'Background image' %>
+      <%= f.file_field :background, accept: 'image/jpeg,image/gif,image/png' %>
+    </div>
+  </div>
+
+  <div class="hide">
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>

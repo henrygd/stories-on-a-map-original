@@ -1,0 +1,4 @@
+<div class="pu-info">
+  <p>Welcome, <%= @user.username %>!</p>
+  <p><%= link_to 'Check out your bookmarks', bookmarks_path, remote: true %> or <%= link_to "your profile", @user %></p>
+</div>

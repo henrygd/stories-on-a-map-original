@@ -1,0 +1,35 @@
+<div id="modal-container" style="background-image:url(<%= @story.background.url %>)">
+  <div id="story-modal">
+    <div id="svg_holder" style="background-image:url(<%= @story.picture.url %>)">
+      <h1 id="story-title"><%= @story.title %></h1>    
+      <h3 id="story-author"><%= @story.author %></h3>
+    </div>
+    <div class="story-container">
+      <article id="story-content"><%=raw @story.content %></article>
+    </div>
+  </div>
+
+  <div class="options-panel">
+    <div id="options-popup"></div>
+    <div class="panel-section" id="close_panel">
+      <i class="fa fa-times"></i>
+    </div>
+    <div class="panel-section" id="font_panel">
+      <i class="fa fa-font"></i>
+    </div>
+    <div class="panel-section" id="night_mode_panel">
+      <i class="fa fa-moon-o"></i>
+    </div>
+    <div class="panel-section" id="image_panel">
+      <i class="fa fa-picture-o"></i>
+    </div>
+    <div class="panel-section" id="bookmark_panel">
+      <i id="bookmark_icon" class="<%= logged_in? && !@current_user.bookmarks.find_by(story_id: @story.id).nil? ? 'fa fa-bookmark' : 'fa fa-bookmark-o' %>"></i>
+    </div>
+    <div class="panel-section" id="twitter_panel">
+      <i class="fa fa-twitter"></i>
+    </div>
+
+  </div>
+
+</div>

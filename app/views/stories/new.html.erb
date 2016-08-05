@@ -1,0 +1,59 @@
+<%= content_for :title, "New Story" %>
+<% content_for :head do %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/medium-editor/4.12.12/css/medium-editor.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/medium-editor/5.17.0/css/themes/flat.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/medium-editor/4.12.12/js/medium-editor.min.js"></script>
+<style>#loading-icon{position:fixed}#modal-container{position:initial;background-color:#333;-webkit-transition:-webkit-transform .4s;transition:transform .4s}</style>
+<% end %>
+
+<div id="new_story_map"></div>
+
+<div id="modal-container" class="show-modal" style="position:relative">
+  <div id="story-modal">
+    <div id="svg_holder">
+      <h1 id="story-title" contenteditable="true" placeholder="Enter Story Title"></h1>    
+      <h3 id="story-author" contenteditable="true" placeholder="Enter Author"></h3>
+    </div>
+    <div class="story-container">
+      <article id="story-content" class="editable"><p>Add story here. Highlight text to see formatting options. You may add an external image by typing a url, highlighting it, and clicking the image button within the formatting popup. Test it below.</p><p>https://source.unsplash.com/random.jpg</p>
+      </article>
+    </div>
+  </div>
+  <div class="options-panel">
+    <div id="options-popup"></div>
+    <div class="panel-section" id="font_panel">
+      <i class="fa fa-font"></i>
+    </div>
+    <div class="panel-section" id="night_mode_panel">
+      <i class="fa fa-moon-o"></i>
+    </div>
+    <div class="panel-section" id="img_upload_panel">
+      <i class="fa fa-picture-o"></i>
+    </div>
+    <div class="panel-section" id="audio_panel">
+      <i class="fa fa-volume-up"></i>
+    </div>
+    <div class="panel-section" id="save_panel">
+      <i class="fa fa-floppy-o"></i>
+    </div>
+    <div class="panel-section" id="load_panel">
+      <i class="fa fa-refresh"></i>
+    </div>
+    <div class="panel-section" id="submit_panel">
+      <i class="fa fa-check-square-o"></i>
+    </div>
+  </div>
+</div>
+
+<div id="image_upload_panel">
+  <button id="close_image_panel" class="icon-cross"></button>
+  <%= render 'form' %>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoUCPaLN5G-9vCe0uzwdayzIFQt4_ssDo"></script>
+<% content_for :script do %>
+  NewStory.onLoadAction();
+  <% if !logged_in? %>
+    $.getScript('/login');
+  <% end %>
+<% end %>

@@ -1,0 +1,63 @@
+<% provide :title, @user.username %>
+
+  <div class="header">
+    <h2><%= @user.username %></h2>
+  </div>
+  <div class="user-page">
+    <div class="story-container">
+      <h2 class="heading fa fa-pencil">Submitted Stories</h2>
+      <p class="subheading">Sort by: <button class="sortStyle">Newest to Oldest</button><button>Oldest to Newest</button></p>
+      <div class="portfolio" id="user_stories">
+        <div class="view-more button" id='show_more_stories' data-stories="createdStories">Nothing here!</div>
+      </div>
+    </div>
+
+    <div class="story-container bookmarks-container">
+      <h2 class="heading fa fa-bookmark-o">Bookmarks</h2>
+      <p class="subheading">Sort by: <button class="sortStyle">Newest to Oldest</button><button>Oldest to Newest</button></p>
+      <div class="portfolio" id="user_bookmarks">
+        <div class="view-more button" id='show_more_bookmarks' data-stories="bookmarks">Nothing here!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Thanks for visiting!</p>
+  </div>
+
+<% content_for :script do %>
+  userPage.bookmarks = [
+    <% @bookmarks.each do |story| %>
+      {
+        id: <%= story.id %>,
+        title: '<%= story.title %>',
+        img: '<%= story.picture %>',
+        info: '<%= story.author %>',
+        url: '<%= story.munged_title %>',
+      },
+    <% end %>
+  ];
+  userPage.createdStories = [
+    <% @user_stories.each do |story| %>
+      {
+        id: <%= story.id %>,
+        title: '<%= story.title %>',
+        img: '<%= story.picture %>',
+        info: '<%= story.author %>',
+        url: '<%= story.munged_title %>',
+      },
+    <% end %>
+  ];
+  userPage.ownPage = <%= @own_page %>
+  userPage.initiate();
+  <% if flash[:notice] %>
+    <% notice = flash[:notice] %>
+    <% if notice == 'Account activated' || notice == 'Password has been reset' || notice == 'Logged in' %>
+      setTimeout(function() {
+        MyAjax.popupForm('Welcome', "fa-thumbs-up", '<div class="pu-info"><p><%= notice %> successfully!</p></div>')
+      }, 500);
+      localStorage.setItem('is_logged_in', 'true');
+      myBookmarks = <%= @current_user.bookmarks.pluck(:story_id) %>;
+    <% end %>
+  <% end %>
+<% end %>

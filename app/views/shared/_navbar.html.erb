@@ -1,0 +1,28 @@
+<div id="navbar">
+  <ul id="navbar-menu" class="navbar-menu">
+    <li class="nav-title">
+      <%= link_to root_path, :class => 'navicon-book' do %>
+          <span>Stories on a Map</span>
+      <% end %>
+    </li>
+      <li class=" nav-link"><%= link_to 'New Story', newstory_path, class: 'navicon-pencil' %></li>
+<% if logged_in? %>
+      <li class="nav-link"><%= link_to 'My Account', @current_user, class: 'navicon-user', id: 'account_link' %></li>
+      <li class="nav-link"><%= link_to 'Bookmarks', bookmarks_path, remote: true, class: 'navicon-bookmark' %></li>
+      <li class="nav-link"><%= link_to 'Random Story', random_story_path, remote: true, class: 'navicon-random' %></li>
+      <li class="nav-link"><%= link_to 'Contact', contact_path, remote: true, class: 'navicon-envelope' %></li>
+      <li class="nav-link"><%= link_to 'Log Out', logout_path, remote: true, method: :delete, class: 'navicon-logout' %></li>
+<% else %>
+      <li class="nav-link"><%= link_to 'Sign Up', signup_path, remote: true, class: 'navicon-user' %> </li>
+      <li class="nav-link"><%= link_to 'Log In', login_path, remote: true, class: 'navicon-login', id: 'login_link' %></li>
+      <li class="nav-link"><%= link_to 'Bookmarks', bookmarks_path, remote: true, class: 'navicon-bookmark' %></li>
+      <li class="nav-link"><%= link_to 'Random Story', random_story_path, remote: true, class: 'navicon-random' %></li>
+      <li class="nav-link"><%= link_to 'Contact', contact_path, remote: true, class: 'navicon-envelope' %></li>
+<% end %>
+      <li id='submenu_container' class="hide-mobile">
+        <a href="javascript: void(0)" id="navbar_more">More</a>
+        <ul id="submenu" class="navbar-submenu"></ul>
+      </li>
+  </ul>
+  <button class="icon-cross navbar-close" id="navbar_close"></button>
+</div>

@@ -1,0 +1,9 @@
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, message, class: "alert-#{message_type}") %>
+<% end %>
+<% if !@emailsent %>
+  <%= form_for(:password_reset, url: password_resets_path, remote: true) do |f| %>
+    <%= f.email_field :email, placeholder: 'Email' %>
+    <%= f.submit 'Submit', class: 'btn-purp' %>
+  <% end %>
+<% end %>

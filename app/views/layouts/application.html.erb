@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= favicon_link_tag '/static/img/favicon.png' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', media: 'all' %>
+  <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Roboto:900', media: 'all' %>
+  <%= yield :head %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render 'shared/navbar' %>
+
+<button id="menu_icon" class="menu-icon"></button>
+
+<main id="main_content">
+<%= yield %>
+<div id="popup_container">
+  <div id="popup_overlay"></div>
+  <div id="home_popup">
+    <div id="pu_head">
+      <h2></h2>
+      <button class="icon-cross" id="cross_close"></button>
+    </div>
+    <div id="popup_inner"><%= yield :popup %></div>
+  </div>
+</div>
+</main>
+
+  <div id="loading-icon" >
+    <i class="fa fa-5x fa-refresh"></i>
+  </div>
+
+<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js' %>
+<%= javascript_include_tag 'application' %>
+
+<script>
+  $(document).ready(function(){
+    UniversalScripts.initiate();
+  <%= yield :script %>
+  });
+</script>
+
+</body>
+</html>

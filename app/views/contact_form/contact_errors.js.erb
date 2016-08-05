@@ -1,0 +1,5 @@
+<% errormsgs = "" %>
+<% @errors.each do |msg| %>
+  <% errormsgs += "<li>#{msg}</li>" %>
+<% end %>
+$('#popup_inner #error_explanation').html("<h3>Please correct the following errors:</h3><ul><%= raw errormsgs %></ul>");

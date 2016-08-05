@@ -1,0 +1,1 @@
+MyAjax.newNavbar("<%= escape_javascript(render('shared/navbar')) %>");

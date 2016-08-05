@@ -1,0 +1,12 @@
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, message, class: "alert-#{message_type}") %>
+<% end %>
+<% if !@mail_sent %>
+  <%= form_for(:contact_form, remote: true) do |f| %>
+    <div id="error_explanation"></div>
+    <%= f.text_field :name, placeholder: 'Name' %>
+    <%= f.email_field :email, placeholder: 'Email' %>
+    <%= f.text_area :message, placeholder: 'Message' %>
+    <%= f.submit "Send", class: 'btn-purp' %>
+  <% end %>
+<% end %>

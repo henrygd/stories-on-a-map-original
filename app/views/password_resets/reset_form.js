@@ -1,0 +1,1 @@
+MyAjax.popupForm("Forgot Password", "fa-key", "<%= escape_javascript(render('reset_form')) %>");

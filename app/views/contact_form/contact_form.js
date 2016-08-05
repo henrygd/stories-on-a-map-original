@@ -1,0 +1,1 @@
+MyAjax.popupForm("Contact", "fa-envelope-o", "<%= escape_javascript(render('contact_form')) %>");

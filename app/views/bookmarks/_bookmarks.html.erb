@@ -1,0 +1,15 @@
+<% if @bookmarks.blank? %>
+  
+<div class="pu-info">
+  <p>You have no bookmarks. Please add some!</p>
+</div>
+
+<% else %>
+
+<div id="bookmark_popup" class="story-container bookmarks-container">
+  <div class="portfolio">
+    <div class="view-more button" id='show_more_stories' data-stories="bookmarks">Nothing here!</div>
+  </div>
+</div>
+
+<% end %>

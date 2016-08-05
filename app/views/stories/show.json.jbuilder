@@ -1,0 +1,1 @@
+json.extract! @story, :title, :author, :content, :id, :picture, :background

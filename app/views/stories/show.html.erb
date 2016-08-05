@@ -1,0 +1,16 @@
+<%= content_for :title, raw(@story.title) %>
+
+<% content_for :head do %>
+  <style>html,body{overflow:hidden;background-color:#333}</style>
+<% end %>
+
+<%= render 'show_story' %>
+
+<% content_for :script do %>
+  ShowStory.onLoad(<%= @story.id %>);
+  <% if flash[:notice] && flash[:notice] == 'story created' %>
+    setTimeout(function() {
+      MyAjax.popupForm('Story Created', "fa-thumbs-up", '<div class="pu-info"><p>Thanks for contributing!</p></div>')
+    }, 1050);
+  <% end %>
+<% end %>

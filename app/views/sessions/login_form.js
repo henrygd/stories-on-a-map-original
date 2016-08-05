@@ -1,0 +1,1 @@
+MyAjax.popupForm("Log In", "fa-sign-in", "<%= escape_javascript(render('login_form')) %>");

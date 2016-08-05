@@ -1,0 +1,1 @@
+MyAjax.popupForm("Success", "fa-thumbs-up", '<div class="pu-info"><p>Please check your email to activate your account!</p></div>');

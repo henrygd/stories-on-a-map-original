@@ -1,0 +1,1 @@
+MyAjax.popupForm('Sign Up', 'fa-users', "<%= escape_javascript(render('users/form_sign_up')) %>");

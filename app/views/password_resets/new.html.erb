@@ -1,0 +1,21 @@
+<% provide(:title, 'Reset password') %>
+<%= content_for :head do %>
+  <style>body{background:#4ca1af;background:-webkit-linear-gradient(to left,#4ca1af,#c4e0e5);background:-webkit-linear-gradient(right,#4ca1af,#c4e0e5);background:linear-gradient(to left,#4ca1af,#c4e0e5)}.flex-container{height:100%;width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-justify-content:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;color:#e8e5c9}.flex-container form input{display:block;width:100%;border-radius:2px;outline:0;background:#636669;border:none;font-size:1.1em;color:#e8e5c9;margin:5px 0;padding:.7em .7em .5em 2em}.flex-container #error_explanation{color:#da1010;width:100%;padding:0;background-color:transparent;font-size:1.2em}.flex-container .alert-danger,.flex-container .alert-notice,.flex-container .alert-success{padding:.7em .5em;border-radius:2px}.flex-container h3{font-size:1em}.paper{background-color:#e8e5c9;width:96%;max-width:28em;border-radius:2px;box-shadow:rgba(0,0,0,.2) 0 0 1.5em;padding:1.8em}.flex-container .btn-purp{padding:.7em .2em .6em}.inner-addon{position:relative}.inner-addon .fa{position:absolute;pointer-events:none;padding:.7em .5em}.left-addon .fa{left:2px}.flex-container h2{color:#3c3c3c;text-align:center;margin:0 0 .5em;font-weight:400;text-transform:uppercase}</style>
+<% end %>
+<container class="flex-container">
+    <div class="paper">
+      <h2>Reset Password</h2>
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert-#{message_type}") %>
+      <% end %>
+      <% if !@emailsent %>
+        <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+          <div class="inner-addon left-addon">
+            <i class="fa fa-envelope"></i>
+            <%= f.email_field :email, placeholder: 'Email' %>
+            <%= f.submit 'Submit', class: 'btn-purp' %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+</container>

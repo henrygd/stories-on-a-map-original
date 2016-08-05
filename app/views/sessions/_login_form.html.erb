@@ -1,0 +1,20 @@
+<div class="pu-info">
+  <span style="padding:0 2%;display:inline-block">New user? <%= link_to "Sign up now", signup_path, remote: true %></span>|<span style="padding:0 2%;display:inline-block">Forgot user/password? <%= link_to "Reset", new_password_reset_path, remote: true %></span>
+</div>
+
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, message, class: "alert-#{message_type}") %>
+<% end %>
+
+<%= form_for(:session, url: login_path, remote: true) do |f| %>
+  <%= f.text_field :username, placeholder: 'Username' %>
+
+  <%= f.password_field :password, placeholder: 'Password' %>
+
+  <%= f.label :remember_me do %>
+    <%= f.check_box :remember_me %>
+    <span>Remember me on this computer</span>
+  <% end %>
+
+  <%= f.submit 'Submit', class: 'btn-purp' %>
+<% end %>
